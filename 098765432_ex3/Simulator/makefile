@@ -11,10 +11,13 @@ OUTPUT_EXEC := $(OUTPUT_DIR)/$(EXEC)
 CPP_COMP_FLAG = -std=c++20 -Werror -Wall -Wextra -pedantic-errors -DNDEBUG 
 CPP_LINK_FLAG = -rdynamic -pthread -ldl
 
-all: $(BIN_DIR) $(OUTPUT_EXEC)
+all: $(BIN_DIR) $(OUTPUT_DIR) $(OUTPUT_EXEC)
 
 $(BIN_DIR): 
 	mkdir -p $(BIN_DIR)
+
+$(OUTPUT_DIR):
+	mkdir -p $(OUTPUT_DIR)
 
 $(OUTPUT_EXEC): $(addprefix $(BIN_DIR)/, $(OBJS))
 	$(COMP) $^ $(CPP_LINK_FLAG) -o $@ 
