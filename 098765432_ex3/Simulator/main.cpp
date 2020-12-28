@@ -5,6 +5,7 @@
 #include <filesystem>
 #include <iostream> 
 #include <set>
+#include <cassert>
 
 namespace fs = std::filesystem;
 
@@ -12,19 +13,26 @@ int main() {
 
 	// dlopen usage example:
 	fs::path run_dir = fs::current_path();
-	fs::path gis_so{run_dir/"GIS/GIS_098765432.so"};
-	if (dlopen(gis_so.c_str(), RTLD_LAZY)) {
+	
+	fs::path gis_so{run_dir/"GIS/GIS_098765432.so"};	
+	void* gis_handle = dlopen(gis_so.c_str(), RTLD_LAZY);
+	if (gis_handle) {
 		std::cout << gis_so << " loaded\n";
 	} else {
 		std::cout << "Oy Vey!\n";
 	}
 
 	fs::path navigation_so{run_dir/"Navigation/Navigation_098765432.so"};
-	if (dlopen(navigation_so.c_str(), RTLD_LAZY)) {
+	void* navigation_handle = dlopen(navigation_so.c_str(), RTLD_LAZY);
+	if (navigation_handle) {
 		std::cout << navigation_so << " loaded\n";
 	} else {
 		std::cout << "Oy Vey!\n";
 	}
+
+	// Don't forget to close all handles!
+	dlclose(gis_handle);
+	dlclose(navigation_handle);
 
 	// Restriction usage example:
 	Restrictions r1 (" toll ,highway");
