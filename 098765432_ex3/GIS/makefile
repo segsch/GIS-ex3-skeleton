@@ -11,10 +11,13 @@ OUTPUT_SHARED_OBJ := $(OUTPUT_DIR)/$(SHARED_OBJ)
 CPP_COMP_FLAG := -std=c++20 -Werror -Wall -Wextra -pedantic-errors -DNDEBUG -fPIC -fvisibility=hidden -fvisibility-inlines-hidden
 CPP_LINK_FLAG := -shared 
 
-all: $(BIN_DIR) $(OUTPUT_SHARED_OBJ)
+all: $(BIN_DIR) $(OUTPUT_DIR) $(OUTPUT_SHARED_OBJ)
 
 $(BIN_DIR):
 	mkdir -p $(BIN_DIR)
+
+$(OUTPUT_DIR):
+	mkdir -p $(OUTPUT_DIR)
 
 $(OUTPUT_SHARED_OBJ): $(OBJS)
 	$(COMP) $(CPP_LINK_FLAG) -o $@ $^ #$(addprefix $(BIN_DIR)/, $^)
