@@ -63,5 +63,19 @@ public:
    * @return std::pair<Meters, Meters> - as {from-junction->point, point->to-junction}
    */
   virtual std::pair<Meters, Meters> getSegmentPartsOnWay(std::size_t segment, const Coordinates& c) const = 0;
+
+  /**
+   * @brief Get the From Junction Coordinates object
+   * 
+   * @return const Coordinates& 
+   */
+  virtual const Coordinates& getFromJunctionCoordinates() const = 0;
+  
+  /**
+   * @brief Get the To Junction Coordinates object
+   * 
+   * @return const Coordinates& 
+   */
+  virtual const Coordinates& getToJunctionCoordinates() const = 0;
 };
 

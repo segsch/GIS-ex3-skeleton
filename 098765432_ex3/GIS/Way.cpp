@@ -80,3 +80,25 @@ std::pair<Meters, Meters> Way::getSegmentPartsOnWay(std::size_t segment, const C
     return res;
 }
 
+/**
+ * @brief Get the From Junction Coordinates object
+ * 
+ * @return const Coordinates& 
+ */
+const Coordinates& Way::getFromJunctionCoordinates() const {
+    // A stub
+    static Coordinates from_coordinates{Longitude{0.0}, Latitude{0.0}};
+    return from_coordinates;
+}
+
+/**
+ * @brief Get the To Junction Coordinates object
+ * 
+ * @return const Coordinates& 
+ */
+const Coordinates& Way::getToJunctionCoordinates() const {
+    // A stub
+    static Coordinates to_coordinates{Longitude{0.0}, Latitude{0.0}};
+    return to_coordinates;
+}
+
