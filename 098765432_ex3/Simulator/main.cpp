@@ -15,6 +15,7 @@ int main() {
 	fs::path run_dir = fs::current_path();
 	
 	fs::path gis_so{run_dir/"GIS/GIS_098765432.so"};	
+	std::cout << "=== Loading GIS_098765432... ===\n"; 
 	void* gis_handle = dlopen(gis_so.c_str(), RTLD_LAZY);
 	if (gis_handle) {
 		std::cout << gis_so << " loaded\n";
@@ -22,7 +23,8 @@ int main() {
 		std::cout << "Oy Vey!\n";
 	}
 
-	fs::path navigation_so{run_dir/"Navigation/Navigation_098765432.so"};
+	fs::path navigation_so{run_dir/"Navigation/Navigation_098765432.so"};	
+	std::cout << "=== Loading Navigation_098765432... ===\n"; 
 	void* navigation_handle = dlopen(navigation_so.c_str(), RTLD_LAZY);
 	if (navigation_handle) {
 		std::cout << navigation_so << " loaded\n";
@@ -58,7 +60,7 @@ int main() {
     	assert(r3.getRestrictions().size() == 0);
     	assert(r3.getRestrictions().begin() == r3.getRestrictions().end());
 
-    	std::cout << "end of main" << std::endl;
+	std::cout << "=== End of main ===\n"; 
 	
 	return EXIT_SUCCESS;
 }
