@@ -36,7 +36,7 @@ const Coordinates& Route::getWayEndPoint() const {
  * @return Meters 
  */
 Meters Route::totalLength() const {
-    return Meters{222.0};
+    return Meters{222.44};
 }
 
 /**
