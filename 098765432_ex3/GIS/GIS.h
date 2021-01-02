@@ -47,8 +47,6 @@ public:
 	 */
 	std::tuple<Coordinates, EntityId, std::size_t> getWayClosestPoint(const Coordinates& c) const override;
 
-	/* ex2 functionality */
-
 	/**
 	 * @brief Get the closest point to Referenced Point, along a Way that complies with provided Restrictions and the EntityId of that Way
 	 *        Restrictions can be provided as: Restrictions("highway") means avoid highway, Restrictions(" toll ") means avoid toll, Restrictions("highway , toll  ") or Restrictions("toll,highway") both mean avoid highway and toll, etc.
