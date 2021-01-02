@@ -7,8 +7,7 @@
  */
 std::pair<EntityId, EntityId> Way::getJunctions() const {
     // A stub
-    std::pair<EntityId, EntityId> res{EntityId("x"), EntityId("y")};
-    return res;
+    return std::make_pair(EntityId{"x"}, EntityId{"y"});
 }
 
 /**
@@ -72,12 +71,9 @@ bool Way::isToll() const {
  * @param c 
  * @return std::pair<Meters, Meters> - {from-junction->point, point->to-junction}
  */
-std::pair<Meters, Meters> Way::getSegmentPartsOnWay(std::size_t segment, const Coordinates& c) const {
+std::pair<Meters, Meters> Way::getSegmentPartsOnWay(std::size_t, const Coordinates&) const {
     // A stub
-    (void)c;
-    (void)segment;
-    std::pair<Meters, Meters> res{Meters{10}, Meters{90}};
-    return res;
+    return std::make_pair(Meters{10}, Meters{90});
 }
 
 /**
