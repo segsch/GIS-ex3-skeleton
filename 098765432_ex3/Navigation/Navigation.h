@@ -13,11 +13,10 @@
 class Navigation_098765432 : public AbstractNavigation {
 public:
     /**
-     * @brief Construct a new Navigation object
+     * @brief Using parent constructor
      * 
-     * @param gis - Note: you get a const ref of NavigationGIS
      */
-    Navigation_098765432(const NavigationGIS& gis);
+    using AbstractNavigation::AbstractNavigation;
 
     /**
      * @brief Get the Routes object
