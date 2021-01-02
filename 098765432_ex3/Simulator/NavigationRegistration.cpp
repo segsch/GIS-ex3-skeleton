@@ -81,6 +81,9 @@ NavigationRegistration::NavigationRegistration(std::function<std::unique_ptr<Abs
 
 	NavigationGIS navigation_gis(gis);
 	auto navigation = factory(navigation_gis);
-	navigation->getRoutes({Longitude{0}, Latitude{0}}, {Longitude{180}, Latitude{0}}); 
-	std::cout << "Usage count is: " << navigation_gis.getUsageCounter() << '\n';
+	auto routes = navigation->getRoutes({Longitude{0}, Latitude{0}}, {Longitude{180}, Latitude{0}}); 
+	const auto& route = routes->shortestDistance(); 
+	Meters totalLength = route.totalLength();
+	std::cout << "Total length of shortest route is: " << static_cast<double>(totalLength) << " Meters\n";
+	std::cout << "Usage count of GIS is: " << navigation_gis.getUsageCounter() << '\n';
 }
