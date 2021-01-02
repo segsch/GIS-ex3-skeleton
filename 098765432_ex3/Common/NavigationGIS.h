@@ -29,7 +29,7 @@ public:
    * @return std::vector<EntityId> 
    */
   std::vector<EntityId> getWaysByJunction(const EntityId& junctionId) const {
-	++usage_counter; 
+	  ++usage_counter; 
   	return gis.getWaysByJunction(junctionId);
   }
 
@@ -41,7 +41,7 @@ public:
    */
   std::tuple<Coordinates, EntityId, std::size_t> getWayClosestPoint(const Coordinates& coords) const {
   	++usage_counter;
-	return gis.getWayClosestPoint(coords);
+	  return gis.getWayClosestPoint(coords);
   }
 
   /**

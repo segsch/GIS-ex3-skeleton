@@ -1,10 +1,10 @@
 #pragma once 
 
+#include "GISNamedTypes.h"
 #include <numbers> 
 #include <cmath>
 #include <tuple>
 #include <optional>
-#include "GISNamedTypes.h"
 
 using std::sin; 
 using std::cos;

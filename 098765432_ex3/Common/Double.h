@@ -1,9 +1,9 @@
 #pragma once 
 
+#include "NamedType.h"
 #include <cmath>
 #include <tuple>
 #include <concepts>
-#include "NamedType.h"
 
 template<std::size_t I>
 consteval double tenToThePowerOf() {
