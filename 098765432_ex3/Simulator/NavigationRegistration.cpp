@@ -46,6 +46,11 @@ NavigationRegistration::NavigationRegistration(std::function<std::unique_ptr<Abs
 			static Coordinates c_to{Longitude{0}, Latitude{0}};
 			return c_to;
 		}
+
+		const EntityId& getId() const {
+    			static EntityId dummy_id{"DUMMY_WAY1000"};
+    			return dummy_id;
+		}
 	};
 
 	// A demo GIS
@@ -56,24 +61,21 @@ NavigationRegistration::NavigationRegistration(std::function<std::unique_ptr<Abs
 				return empty_vector;
 		}
 
-		std::vector<EntityId> getWaysByJunction(const EntityId& junctionId) const {
-				(void)junctionId;
+		std::vector<EntityId> getWaysByJunction(const EntityId&) const {
 				std::vector<EntityId> returned{EntityId{"W1"}, EntityId{"W2"}};
 				return returned;
 		}
 
 		std::tuple<Coordinates, EntityId, std::size_t> getWayClosestPoint(const Coordinates& c) const {
-				std::tuple<Coordinates, EntityId, std::size_t> returned = std::make_tuple(Coordinates{Longitude{0},Latitude{0}}, EntityId{"other"}, (std::size_t) 5);
-				(void)c;
+				std::tuple<Coordinates, EntityId, std::size_t> returned = std::make_tuple(c, EntityId{"other"}, (std::size_t) 5);
 				return returned;
 		}
 
-		std::tuple<Coordinates, EntityId, std::size_t> getWayClosestPoint(const Coordinates&, const Restrictions&) const {
-				return std::make_tuple(Coordinates{Longitude{0},Latitude{0}}, EntityId{"other"}, (std::size_t) 5);
+		std::tuple<Coordinates, EntityId, std::size_t> getWayClosestPoint(const Coordinates& c, const Restrictions&) const {
+				return std::make_tuple(c, EntityId{"other"}, (std::size_t) 5);
 		}
 
-		const AbstractWay& getWay(const EntityId& wayId) const {
-				(void)wayId;
+		const AbstractWay& getWay(const EntityId&) const {
 				static Way dummy_way{};
 				return dummy_way;
 		}

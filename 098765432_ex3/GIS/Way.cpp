@@ -98,3 +98,13 @@ const Coordinates& Way::getToJunctionCoordinates() const {
     return to_coordinates;
 }
 
+/**
+ * @brief Get the EntityId of Way object
+ *
+ * @return const EntityId& - Way's id
+ */
+const EntityId& Way::getId() const { 
+    // A stub
+    static EntityId dummy_id{"DUMMY_WAY1000"};
+    return dummy_id;
+}

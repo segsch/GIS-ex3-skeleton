@@ -83,5 +83,12 @@ public:
      * @return const Coordinates& 
      */
     const Coordinates& getToJunctionCoordinates() const override;
+
+    /**
+     * @brief Get the EntityId of Way object
+     * 
+     * @return const EntityId& - Way's id
+     */
+    const EntityId& getId() const override;
 };
 

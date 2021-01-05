@@ -77,5 +77,12 @@ public:
    * @return const Coordinates& 
    */
   virtual const Coordinates& getToJunctionCoordinates() const = 0;
+
+   /**
+   * @brief Get the EntityId of Way object
+   *
+   * @return const EntityId& - Way's id
+   */
+  virtual const EntityId& getId() const = 0;
 };
 
