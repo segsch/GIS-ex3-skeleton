@@ -16,10 +16,7 @@ NavigationValidator::NavigationValidator(const AbstractGIS& gis) { (void)gis; }
  * @return true - Route is valid 
  * @return false - Route is not valid
  */
-bool NavigationValidator::validateRoute(const Coordinates& start, const Coordinates& end, const AbstractRoute& r) const {
-    (void)start;
-    (void)end; 
-    (void)r;
+bool NavigationValidator::validateRoute(const Coordinates&, const Coordinates&, const AbstractRoute&) const {
     return true;
 }
 

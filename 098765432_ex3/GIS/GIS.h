@@ -65,4 +65,56 @@ public:
 	 * @return const Way& 
 	 */
 	const AbstractWay& getWay(const EntityId& wayId) const override;
+
+    	/* ex1 functionality: */
+
+	/**
+	 * @brief Clears all data from the system
+	 * 
+	 * @return std::size_t - number of entities that were cleared
+	 */
+	std::size_t clear();
+
+	/**
+	 * @brief Saves all data into a map file
+	 *        All saved entities must include their Ids
+	 * 
+	 * @param filename - Name of mapfile to be saved
+	 * @return std::size_t - number of saved entities
+	 */
+	std::size_t saveMapFile(const std::string& filename) const;
+
+	/**
+	 * @brief Get the Entities that match the search_name
+	 * 
+	 * @param search_name 
+	 * @return std::vector<EntityId> 
+	 *         [1] All exact matches (case sensitive) of name field shall be first in the vector
+	 *         [2] Right after, shall optionally appear "partial matches", in any order (e.g. case insensitive match, matching based on the longer description, 
+	 *         	   match based on the category tags, etc. Partial match may work differently when the search is coordinates based or not
+	 *             Note: partial match implementation is not mandatory, however it may grant you a bonus (See info in ex doc). 
+	 */
+	std::vector<EntityId> getEntities(const std::string& search_name) const;
+
+	/**
+	 * @brief Get the Entities that match the search_name in a specific area provided by a circle
+	 *
+	 * @param search_name
+	 * @param radius
+	 * @return std::vector<EntityId> - EntityIds of all entities that match the search_name and in proivded area
+	 */
+	std::vector<EntityId> getEntities(const std::string& search_name, const Coordinates&, Meters radius) const;
+
+	/**
+	 * @brief Get closest point on given enity's perimeter to the given Coordinates
+	 * 
+	 * @param entity - Provided entity 
+	 * @param c - Referenced Coordinates
+	 * @return std::optional<Coordinates> - the closest point
+	 * 	                                [1] If the Id is not known returns an empty optional
+	 *                                      [2] Otherwise, returns the closest Coordinates, on entity's perimeter, to the provided Coordinates.
+	 *                                          The Coordinates shall be a point on a the entity's geometry that is closest to the given Coordinates.
+	 */
+	std::optional<Coordinates> getEntityClosestPoint(const EntityId& entity, const Coordinates& c) const;
+
 };

@@ -31,3 +31,33 @@ const AbstractWay& GIS_098765432::getWay(const EntityId&) const {
 	static Way dummy_way{};
 	return dummy_way;
 }
+
+/* Ex1 Functionality */ 
+
+std::size_t GIS_098765432::clear() { 
+	std::size_t size = 8;
+	return size;
+}
+
+std::size_t GIS_098765432::saveMapFile(const std::string&) const {
+	return 8;
+}
+
+std::vector<EntityId> GIS_098765432::getEntities(const std::string& search_name) const {
+	std::vector<EntityId> res;
+	if (search_name == "Washington Square Park") {
+		res.emplace_back(EntityId("P1001"));
+	}
+
+	return res;
+}
+
+std::vector<EntityId> GIS_098765432::getEntities(const std::string&, const Coordinates&, Meters) const {
+	std::vector<EntityId> res;
+	res.emplace_back(EntityId("W2"));
+	return res;
+}
+
+std::optional<Coordinates> GIS_098765432::getEntityClosestPoint(const EntityId&, const Coordinates& c) const {
+	return {c};
+}
