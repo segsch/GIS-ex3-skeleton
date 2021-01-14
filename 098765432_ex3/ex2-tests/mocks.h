@@ -29,7 +29,20 @@ const std::vector<EntityId>& getInputFileEntities(const std::string& filename) {
 	if (filename == "ex2_map1.json") {
 		static std::vector<EntityId> ex2_map1_entites({EntityId("P1"), EntityId("J1"), EntityId("J2"), EntityId("J3"), EntityId("J4"), EntityId("J5"), EntityId("P2"), EntityId("W1"), EntityId("W2"), EntityId("W3"), EntityId("W4"), EntityId("W5")});	
 		return ex2_map1_entites; 
-	} 
+	}
+        if (filename == "ex2_map2.json") {
+                static std::vector<EntityId> ex2_map2_entites({EntityId("P1"), EntityId("J1"), EntityId("J2"), EntityId("J3"), EntityId("J4"), EntityId("J5"), EntityId("P2"), EntityId("W1"), EntityId("W2"), EntityId("W3"), EntityId("W4"), EntityId("W5")});
+                return ex2_map2_entites;
+        }
+	if (filename == "ex2_map2_highways.json") {
+                static std::vector<EntityId> ex2_map2_highways_entites({EntityId("P1"), EntityId("J1"), EntityId("J2"), EntityId("J3"), EntityId("J4"), EntityId("J5"), EntityId("P2"), EntityId("W1"), EntityId("W2"), EntityId("W3"), EntityId("W4"), EntityId("W5")});
+                return ex2_map2_highways_entites;
+        }
+        if (filename == "ex2_map3_uniderectional_edges.json") {
+                static std::vector<EntityId> ex2_map3_uniderectional_edges_entites({EntityId("P1"), EntityId("J1"), EntityId("J2"), EntityId("J3"), EntityId("J4"), EntityId("J5"), EntityId("P2"), EntityId("W1"), EntityId("W2"), EntityId("W3"), EntityId("W4"), EntityId("W5")});
+                return ex2_map3_uniderectional_edges_entites;
+        }
+
 	//Empty file
 	static std::vector<EntityId> empty_vector{};
 	return empty_vector;
@@ -112,4 +125,43 @@ gis_testing::Way ex2_map1_W4{ex2_map1_J3, ex2_map1_J4};
 gis_testing::Way ex2_map1_W5{ex2_map1_J4, ex2_map1_J5};
 
 std::vector<std::pair<EntityId, Direction>> ex2_map1_best_route_ways{std::make_pair(EntityId{"W1"}, Direction::A_to_B), std::make_pair(EntityId{"W3"}, Direction::A_to_B), std::make_pair(EntityId{"W5"}, Direction::A_to_B)};
+
+/**
+ * @brief ex2_map2.json
+ *
+ */
+Coordinates ex2_map2_P1{Longitude{-30.24}, Latitude{50}};
+Coordinates ex2_map2_P2{Longitude{-25.282}, Latitude{48.12}};
+
+Coordinates ex2_map2_J1{Longitude{-30.23}, Latitude{49.84}};
+Coordinates ex2_map2_J2{Longitude{-29.76}, Latitude{49.12}};
+Coordinates ex2_map2_J3{Longitude{-29.02}, Latitude{51}};
+Coordinates ex2_map2_J4{Longitude{-27.3}, Latitude{48.2}};
+Coordinates ex2_map2_J5{Longitude{-25.31}, Latitude{48.53}};
+
+gis_testing::Way ex2_map2_W1{ex2_map2_J1, ex2_map2_J2};
+gis_testing::Way ex2_map2_W2{ex2_map2_J2, ex2_map2_J3};
+gis_testing::Way ex2_map2_W3{ex2_map2_J2, ex2_map2_J4};
+gis_testing::Way ex2_map2_W4{ex2_map2_J3, ex2_map2_J4};
+gis_testing::Way ex2_map2_W5{ex2_map2_J4, ex2_map2_J5};
+
+std::vector<std::pair<EntityId, Direction>> ex2_map2_shortest_route{std::make_pair(EntityId{"W1"}, Direction::A_to_B), std::make_pair(EntityId{"W3"}, Direction::A_to_B), std::make_pair(EntityId{"W5"}, Direction::A_to_B)};
+std::vector<std::pair<EntityId, Direction>> ex2_map2_fastest_route{std::make_pair(EntityId{"W1"}, Direction::A_to_B), std::make_pair(EntityId{"W2"}, Direction::A_to_B), std::make_pair(EntityId{"W4"}, Direction::A_to_B), std::make_pair(EntityId{"W5"}, Direction::A_to_B)};
+
+/**
+ * @brief ex2_map2_highways.json
+ *
+ */
+std::vector<std::pair<EntityId, Direction>> ex2_map2_highways_no_highways_route{std::make_pair(EntityId{"W2"}, Direction::B_to_A), std::make_pair(EntityId{"W3"}, Direction::A_to_B)};
+
+/**
+ * @brief ex2_map4_curves2.json
+ *
+ */
+
+Coordinates ex2_map4_J6{Longitude{-28.3}, Latitude{47.1}};
+
+std::vector<std::pair<EntityId, Direction>> ex2_map4_curves2_fastest_route{std::make_pair(EntityId{"W1"}, Direction::A_to_B), std::make_pair(EntityId{"W2"}, Direction::A_to_B), std::make_pair(EntityId{"W6"}, Direction::A_to_B), std::make_pair(EntityId{"W7"}, Direction::A_to_B), std::make_pair(EntityId{"W5"}, Direction::A_to_B)};
+
+std::vector<std::pair<EntityId, Direction>> ex2_map4_curves2_shortest_route{std::make_pair(EntityId{"W1"}, Direction::A_to_B), std::make_pair(EntityId{"W3"}, Direction::A_to_B), std::make_pair(EntityId{"W5"}, Direction::A_to_B)};
 
